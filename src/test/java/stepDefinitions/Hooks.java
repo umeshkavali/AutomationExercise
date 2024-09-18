@@ -48,7 +48,7 @@ public class Hooks extends BaseClass
        if(scenario.isFailed()) 
        {
        	
-       	TakesScreenshot ts=(TakesScreenshot) driver;
+       	TakesScreenshot ts=(TakesScreenshot) BaseClass.getDriver();
        	byte[] screenshot=ts.getScreenshotAs(OutputType.BYTES);
        	scenario.attach(screenshot, "image/png",scenario.getName());
        	            

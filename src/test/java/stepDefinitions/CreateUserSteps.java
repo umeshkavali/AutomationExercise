@@ -1,10 +1,17 @@
 package stepDefinitions;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import factory.BaseClass;
 import io.cucumber.datatable.DataTable;
@@ -17,7 +24,6 @@ public class CreateUserSteps extends BaseClass
 	public WebDriver driver;
 	public Properties p;
 	public CreateAUserPage cnp;
-	public BaseClass bs;
 	
 	@Given("User launch the browser")
 	public void user_launch_the_browser() throws IOException
@@ -54,6 +60,7 @@ public class CreateUserSteps extends BaseClass
 	@Then("User clicks on SignUp or Login button")
 	public void user_clicks_on_sign_up_or_login_button() 
 	{
+		cnp = new CreateAUserPage(BaseClass.getDriver());
 	    cnp.clickSignUpLogin();
 	}
 
@@ -63,17 +70,88 @@ public class CreateUserSteps extends BaseClass
 	    cnp.verifyingNewUserSignUpText();
 	}
 	
-	@Then("User should enter the name as {string} and password as {string}")
-	public void user_should_enter_the_name_as_and_password_as(String name, String email)
+	@Then("User should enter the name as {string} and emailId as {string}")
+	public void user_should_enter_the_name_as_and_emailid_as(String name, String email)
 	{
 		cnp.enterName(name);
 		cnp.enterEmailAddress(email);
 	}
 	
-	@Then("User should fill the below details")
-	public void user_should_fill_the_below_details(DataTable dataTable) throws InterruptedException 
+	
+	
+	@Then("User should fill the below account information details")
+	public void user_should_fill_the_below_account_information_details(DataTable dataTable) throws InterruptedException 
 	{
-	    String date = bs.getDate("HHmmSS");
+		
+		List<List<String>> userList = dataTable.asLists(String.class);
+		
+		for(List<String>list:userList)
+		{
+			System.out.println(list);
+		}
+		
+//		HashMap<String,String> hm=new HashMap<String, String>();
+		
+		//adding data pairs to hashmap
+		
+//		hm.get("Title");
+//		hm.get("Password");
+//		hm.get("Date");
+//		hm.get("Month");
+//		hm.get("Year");
+		
+//		Map<String, String> accData = dataTable.asMap(String.class, String.class);
+		
+		// Radio Button to click on Mr.
+		
+
+		
+		
+//		WebElement btn_Male = cnp.rdo_Mr;
+//		WebElement btn_Female = cnp.rdo_Mrs;
+//		
+//		cnp.gender_Radio(btn_Female);
+		
+//		if(btn_Male.isDisplayed())
+//		{
+//			Actions action = new Actions(BaseClass.getDriver());
+//			action.click(btn_Male).build().perform();
+//		}		
+//		
+//		else
+//		{
+//			Actions action = new Actions(BaseClass.getDriver());
+//			action.click(btn_Female).build().perform();
+//		}		
+		
+//		Thread.sleep(3000);
+//		
+//		
+////		btn_Radio().click().accData.get("Title"), Keys.TAB));
+//        
+       
+//        Thread.sleep(3000);
+		
+//        WebElement feMale = cnp.rdo_Mrs;
+//        feMale.sendKeys(accData.get(feMale));
+        
+//        WebElement inputPassword=cnp.txtPassword;
+//        inputPassword.sendKeys(accData.get("Password"), Keys.TAB);
+        
+//        WebElement day = driver.findElement(By.xpath("//select[@id='days']"));
+//        
+//        Select selectbyDate = new Select(day);
+//        selectbyDate.selectByVisibleText();
+        
+        
+        
+        
+        
+        
+        
+        
+		
+		/*
 	    List<String> dataList = dataTable.asList();
 	    for(String input : dataList)
 	    {
@@ -92,6 +170,18 @@ public class CreateUserSteps extends BaseClass
 	    	
 	    	Thread.sleep(5000);
 	    }
+	    
+	    */
+	}
+	
+	@Then("User should fill the below address information details")
+	public void user_should_fill_the_below_address_information_details(DataTable dataTable2) 
+	{
+		
+//		Map<String, String> addressData = dataTable2.asMap(String.class, String.class);
+//
+//		 WebElement inputFirstName=cnp.txtFirstName();
+//		 inputFirstName.sendKeys(addressData.get("First name"), Keys.TAB);
 	}
 	
 
@@ -149,13 +239,17 @@ public class CreateUserSteps extends BaseClass
 	@Then("Verify that ACCOUNT DELETED! is visible and click Continue button")
 	public void verify_that_account_deleted_is_visible_and_click_continue_button() 
 	{
+	    boolean del_Msg = cnp.deleteAccountConfirmationMsg();
+	    Assert.assertTrue(del_Msg);
+	    cnp.clickOnContinueButton();
 	    
 	}
 	
 	@Then("User Verify that Logged in as username is visible")
 	public void user_verify_that_logged_in_as_username_is_visible() 
 	{
-		//b[normalize-space()='Umesh']
+		boolean verifyLoggedInAs = cnp.verifyingLoggedInAs();
+		Assert.assertTrue(verifyLoggedInAs);
 	}
 
 	@Then("User Click Delete Account button")

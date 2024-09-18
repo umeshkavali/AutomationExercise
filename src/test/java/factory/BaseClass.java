@@ -12,13 +12,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import io.opentelemetry.sdk.metrics.data.Data;
+
 public class BaseClass 
 {
 	static WebDriver driver;
     static Properties p;
-    public static int DataRowNumber;
-    public static String SheetName;
-    public static String referenceNumber;
+
   	     
 public static WebDriver initilizeBrowser() throws IOException
 {
@@ -63,13 +63,5 @@ public static Properties getProperties() throws IOException
 	p.load(file);
 	return p;
 }
-
-public String getDate(String pattern)
-{
-    Date date = new Date();
-    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-    return sdf.format(date);
-}
-
 
 }
