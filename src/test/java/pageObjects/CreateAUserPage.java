@@ -49,8 +49,11 @@ public class CreateAUserPage extends BasePage
 	
 	public void enterName(String nme)
 	{
-		txtName.clear();
-		txtName.sendKeys(nme);
+//		txtName.clear();
+//		txtName.sendKeys(nme);
+		
+		
+		
 	}
 	
 	
