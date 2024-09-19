@@ -49,10 +49,8 @@ public class CreateAUserPage extends BasePage
 	
 	public void enterName(String nme)
 	{
-//		txtName.clear();
-//		txtName.sendKeys(nme);
-		
-		
+		txtName.clear();
+		txtName.sendKeys(nme);
 		
 	}
 	
@@ -86,23 +84,26 @@ public class CreateAUserPage extends BasePage
 		System.out.println("Verifying the Enter Account Information Text is:"+verifyEnterAccountInfo);
 	}
 	
-	@FindBy(xpath="//input[@id='id_gender1']")
-	@CacheLookup
-	public WebElement rdo_Mr;
+//	@FindBy(xpath="//select[@id='days']")
+//	@CacheLookup
+//	public WebElement selDay;
+//	
+//	@FindBy(xpath="//select[@id='months']")
+//	@CacheLookup
+//	public WebElement selMon;
+//	
+//	@FindBy(xpath="//select[@id='years']")
+//	@CacheLookup
+//	public WebElement selYear;
+//	
+//	public WebElement selectDateOfBirth()
+//	{
+//		selDay.click();
+//		selMon.click();
+//		selYear.click();
+//		return selectDateOfBirth();
+//	}
 	
-	public void clickOnMale()
-	{
-		rdo_Mr.click();
-	}
-	
-	@FindBy(xpath="//input[@id='id_gender2']")
-	@CacheLookup
-	public WebElement rdo_Mrs;
-	
-	public void clickOnFemale()
-	{
-		rdo_Mrs.click();
-	}
 	
 	@FindBy(xpath="//input[@id='password']")
 	@CacheLookup

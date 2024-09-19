@@ -79,110 +79,16 @@ public class CreateUserSteps extends BaseClass
 	
 	
 	
-	@Then("User should fill the below account information details")
-	public void user_should_fill_the_below_account_information_details(DataTable dataTable) throws InterruptedException 
-	{
-		
-		List<List<String>> userList = dataTable.asLists(String.class);
-		
-		for(List<String>list:userList)
+	@Then("User should fill the below account and address information details")
+	public void user_should_fill_the_below_account_and_address_information_details(DataTable dataTable) 
+	{		
+		for(Map<String, String> row: dataTable.asMaps(String.class, String.class))
 		{
-			System.out.println(list);
+			
 		}
-		
-//		HashMap<String,String> hm=new HashMap<String, String>();
-		
-		//adding data pairs to hashmap
-		
-//		hm.get("Title");
-//		hm.get("Password");
-//		hm.get("Date");
-//		hm.get("Month");
-//		hm.get("Year");
-		
-//		Map<String, String> accData = dataTable.asMap(String.class, String.class);
-		
-		// Radio Button to click on Mr.
-		
-
-		
-		
-//		WebElement btn_Male = cnp.rdo_Mr;
-//		WebElement btn_Female = cnp.rdo_Mrs;
-//		
-//		cnp.gender_Radio(btn_Female);
-		
-//		if(btn_Male.isDisplayed())
-//		{
-//			Actions action = new Actions(BaseClass.getDriver());
-//			action.click(btn_Male).build().perform();
-//		}		
-//		
-//		else
-//		{
-//			Actions action = new Actions(BaseClass.getDriver());
-//			action.click(btn_Female).build().perform();
-//		}		
-		
-//		Thread.sleep(3000);
-//		
-//		
-////		btn_Radio().click().accData.get("Title"), Keys.TAB));
-//        
-       
-//        Thread.sleep(3000);
-		
-//        WebElement feMale = cnp.rdo_Mrs;
-//        feMale.sendKeys(accData.get(feMale));
-        
-//        WebElement inputPassword=cnp.txtPassword;
-//        inputPassword.sendKeys(accData.get("Password"), Keys.TAB);
-        
-//        WebElement day = driver.findElement(By.xpath("//select[@id='days']"));
-//        
-//        Select selectbyDate = new Select(day);
-//        selectbyDate.selectByVisibleText();
-        
-        
-        
-        
-        
-        
-        
-        
-		
-		/*
-	    List<String> dataList = dataTable.asList();
-	    for(String input : dataList)
-	    {
-	    	switch(input)
-	    	{
-	    	case "Title": break;
-	    	case "Password": break;
-	    	case "Date": break;
-	    	case "Month": break;
-	    	case "Year": break;
-	    	
-	    	default:
-	    	throw new IllegalStateException("Unexpected value: " + input);	
-	    		
-	    	}
-	    	
-	    	Thread.sleep(5000);
-	    }
-	    
-	    */
 	}
 	
-	@Then("User should fill the below address information details")
-	public void user_should_fill_the_below_address_information_details(DataTable dataTable2) 
-	{
-		
-//		Map<String, String> addressData = dataTable2.asMap(String.class, String.class);
-//
-//		 WebElement inputFirstName=cnp.txtFirstName();
-//		 inputFirstName.sendKeys(addressData.get("First name"), Keys.TAB);
-	}
+	
 	
 
 	@Then("User Enter name and email address")
@@ -257,6 +163,7 @@ public class CreateUserSteps extends BaseClass
 	{
 		cnp.deleteAccount();
 	}
+
 
 
 }
